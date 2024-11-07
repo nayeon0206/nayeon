@@ -2,11 +2,11 @@ let num1 = 7
 let num2 = 2
 
 function solution(num1, num2) {
-    var answer = parseInt(num1 / num2);
+    var answer = Math.floor(num1 / num2);
     return answer;
 }
 
-console.log(parseInt(num1 / num2));
+console.log(Math.floor(num1 / num2));
 // 몫 구하기
 
 // 자바스크립트에는 몫을 구하는 방법이 몇개 있다.
