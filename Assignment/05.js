@@ -24,3 +24,5 @@ function solution(num1, num2) {
 //   console.log(solution(num1, num2));
 
 // 삼항 연산자를 이용하면 더 깔끔하게 나타낼 수 있다.
+
+//숫자 비교하기
