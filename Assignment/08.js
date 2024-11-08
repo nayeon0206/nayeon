@@ -17,7 +17,7 @@
 // 둔각일 때 3
 // 평각일 때 4
 
-
+// 조건문 활용 if
 function solution(angle) {
     if (angle < 90) {
         return 1
