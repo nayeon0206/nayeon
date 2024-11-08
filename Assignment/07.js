@@ -7,13 +7,9 @@
 // 1. num1을 num2로 나누자.
 // 2. 1000을 곱하기 전에 ! 정수 부분만 남기자.
 // 3. 나눈 값에 1000을 곱하자.
-//
-
-
-// 예시 num1 = 3, num2 = 2
-// 
 
 // num1 / num2 * 1000
+// num1 / num2 값에 정수부분만 남기기!
 
 function solution(num1, num2) {
     var answer = Math.floor((num1 / num2) * 1000);
