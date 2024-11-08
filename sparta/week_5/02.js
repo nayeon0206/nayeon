@@ -2,6 +2,7 @@
 class Person {
     // 우리는 사람이기때문에 필수요소
     // 요소 : name, age
+    //constructor는 생성자 함수
     constructor (name, age) {
         this.name = name; //this에name(우리가 만들 실체) = 외부로부터 받아온 것
         this.age = age;
