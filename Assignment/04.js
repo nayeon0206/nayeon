@@ -1,3 +1,5 @@
+// 나이 출력
+
 let age = 23;
 
 function solution(age) {
