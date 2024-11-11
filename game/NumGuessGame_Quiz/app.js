@@ -17,6 +17,7 @@ let playGame = true;
 
 // 게임을 시작하는 부분입니다.
 if (playGame) {
+  // 정답에 대한 동그라미 그리기(검정색)
   makeAnswerCircle(randomNumber, "answer");
   $guessingResult.innerHTML = `<h1>숫자를 입력해 주세요.</h1>`;
   $submitButton.addEventListener("click", function (e) {
@@ -46,11 +47,11 @@ function validate(guess) {
   if (isNaN(guess)) {
     alert("숫자를 입력해 주세요");
     return false;
-  } else if (guess < 10) {
-    alert("10 이상의 정수를 입력해 주세요");
+  } else if (guess < 20) {
+    alert("20 이상의 정수를 입력해 주세요");
     return false;
-  } else if (guess > 100) {
-    alert("100 이하의 정수를 입력해 주세요");
+  } else if (guess > 120) {
+    alert("120 이하의 정수를 입력해 주세요");
     return false;
   }
   
@@ -83,12 +84,13 @@ function displayGuesses(guess) {
   $guessSlot.innerHTML += `${guess}  `;
   numGuesses++;
   // 구현 1. 남아있는 숫자를 보여줄 수 있도록 아래의 = 이후를 작성해주세요!
-  $remainingCount.innerHTML = ;
+  $remainingCount.innerHTML = `${11 -numGuesses}`;
 }
 
 // 유저에게 띄울 메세지를 입력합니다.
 function displayMessage(message) {
   // 구현 2. 유저에게 메세지를 보여줄 수 있도록 아래의 영역을 구현해주세요
+  $guessingResult.innerHTML = `<h1>${message}</h1>`;
 }
 
 function endGame() {
@@ -105,12 +107,20 @@ function makeAnswerCircle(guess) {
   const CIRCLE_NAME = "answer"
   // 구현3. 유저가 원의 크기로 정답을 유추하기 쉽도록 showCircle 함수를 이용해서 해당 부분을 구현해주세요,
   // showCircle 함수의 "작업"이 끝나면, 해당 div에 원의 이름을 입력해주세요
+  showCircle(guess, CIRCLE_NAME, $answerCircleArea).then((div) => {
+    div.id = "answerCircle"
+    div.append(CIRCLE_NAME);
+  });
 }
 
 function makeGuessCircle(guess) {
   const CIRCLE_NAME = "guess"
   // 구현3. 유저가 원의 크기로 정답을 유추하기 쉽도록 showCircle 함수를 이용해서 해당 부분을 구현해주세요,
   // showCircle 함수의 "작업"이 끝나면, 해당 div에 원의 이름을 입력해주세요
+  showCircle(guess, CIRCLE_NAME, $guessCircleArea).then((div) => {
+    div.id = "guessCircle"
+    div.append(CIRCLE_NAME);
+  });
 }
 
 
@@ -141,6 +151,6 @@ function showCircle(size, circleName, area) {
         div.removeEventListener("transitionend", handler);
         resolve(div);
       });
-    }, 0);
+    }, 10);
   });
 }
