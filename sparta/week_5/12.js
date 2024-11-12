@@ -11,7 +11,7 @@ const increase = function () {
 };
 
 console.log(increase());
-num = 100; // 치명적인 단점이 있어요.
+// num = 100; // 치명적인 단점이 있어요.
 console.log(increase());
 console.log(increase());
 

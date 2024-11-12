@@ -18,7 +18,7 @@ class Animal {
 //constructor는 써줄 필요가 없음. 상속이 되었기 때문에
 class Dog extends Animal {
     // 부모에게서 내려받은 메서드를 재정의할 수 있음
-    // oberriding... << 부모로부터 내려받아서 재정의 하는 것
+    // oberriding... << 부모로부터 내려받아서 새로운 메서드 정의 하는 것
     speak () {
         console.log(`${this.name} barks!`);
     }
