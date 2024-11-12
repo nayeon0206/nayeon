@@ -3,28 +3,44 @@ import readlineSync from "readline-sync";
 
 class Player {
   constructor() {
-    this.hp = 50;
+    this.hp = 100;
+    this.minPower = 5;
+    this.maxPower = 15;
   }
 
   attack() {
     // 플레이어의 공격
     //
-    const damage = Math.floor(Math.random() * 10) + 5;
+    const damage = Math.floor(Math.random() * this.Power) + 5;
     console.log(chalk.blue(`플레이어가 ${damage} 데미지를 입혔습니다.`));
     return damage;
+  }
+
+  levelUp() {
+    this.hp = Math.floor( (Math.random()* 10)/stage);
+    this.Powor = Math.floor( (Math.random()* 10)/stage);
+    console.log (`스테이지 클리어! 체력이 증가하고 공격력이 증가했습니다!`)
   }
 }
 
 class Monster {
   constructor() {
-    this.hp = 20;
+    this.hp = 50;
+    this.minPower = 2;
+    this.maxPower = 8;
   }
 
   attack() {
     // 몬스터의 공격
-    const damage = Math.floor(Math.random() * 5) + 5;
+    const damage = Math.floor(Math.random() * this.maxPower) + 5;
     console.log(chalk.red(`몬스터가 ${damage} 데미지를 입혔습니다.`));
     return damage;
+  }
+
+  levelUp() {
+    this.hp = (stage-1)*50;
+    this.mimPower = (stage-1)*5;
+    this.maxPower = (stage-1)*10;
   }
 }
 
@@ -32,8 +48,8 @@ function displayStatus(stage, player, monster) {
   console.log(chalk.magentaBright(`\n=== Current Status ===`));
   console.log(
     chalk.cyanBright(`| Stage: ${stage} `) +
-      chalk.blueBright(`| Player HP: ${player.hp}`) +
-      chalk.redBright(`| Monster HP: ${monster.hp} |`),
+      chalk.blueBright(`| Player HP: ${player.hp} |`,`| Player Power: ${player.minPower}~${player.maxPower} |`) +
+      chalk.redBright(`| Monster HP: ${monster.hp} |`,`| Monster Power: ${monster.minPower}~${monster.maxPower} |`),
   );
   console.log(chalk.magentaBright(`=====================\n`));
 }
@@ -87,7 +103,7 @@ const battle = async (stage, player, monster) => {
       default:
         break;
     }
-    logs.push(chalk.green(`${choice}를 선택하셨습니다.`));
+    logs.push(chalk.green(`${choice}를 선택했습니다.`));
   }
 };
 
