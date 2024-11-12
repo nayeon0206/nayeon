@@ -4,52 +4,41 @@ import readlineSync from "readline-sync";
 class Player {
   constructor() {
     this.hp = 100;
-    this.minPower = 5;
-    this.maxPower = 15;
   }
 
   attack() {
     // 플레이어의 공격
     //
-    const damage = Math.floor(Math.random() * this.Power) + 5;
+    const damage = Math.floor(Math.random() * 10) + 5;
     console.log(chalk.blue(`플레이어가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
-
-  levelUp() {
-    this.hp = Math.floor( (Math.random()* 10)/stage);
-    this.Powor = Math.floor( (Math.random()* 10)/stage);
-    console.log (`스테이지 클리어! 체력이 증가하고 공격력이 증가했습니다!`)
-  }
 }
+
+ 
 
 class Monster {
   constructor() {
     this.hp = 50;
-    this.minPower = 2;
-    this.maxPower = 8;
+    
   }
 
   attack() {
     // 몬스터의 공격
-    const damage = Math.floor(Math.random() * this.maxPower) + 5;
+    const damage = Math.floor(Math.random() * 5) + 5;
     console.log(chalk.red(`몬스터가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
 
-  levelUp() {
-    this.hp = (stage-1)*50;
-    this.mimPower = (stage-1)*5;
-    this.maxPower = (stage-1)*10;
-  }
+
 }
 
 function displayStatus(stage, player, monster) {
   console.log(chalk.magentaBright(`\n=== Current Status ===`));
   console.log(
     chalk.cyanBright(`| Stage: ${stage} `) +
-      chalk.blueBright(`| Player HP: ${player.hp} |`,`| Player Power: ${player.minPower}~${player.maxPower} |`) +
-      chalk.redBright(`| Monster HP: ${monster.hp} |`,`| Monster Power: ${monster.minPower}~${monster.maxPower} |`),
+      chalk.blueBright(`| Player HP: ${player.hp} |`,`| Player Power: |`) +
+      chalk.redBright(`| Monster HP: ${monster.hp} |`,`| Monster Power: |`),
   );
   console.log(chalk.magentaBright(`=====================\n`));
 }
@@ -69,6 +58,8 @@ const battle = async (stage, player, monster) => {
       ),
     );
     const choice = readlineSync.question("your choice? ");
+
+    let playerActionCompleted = false;
     // 플레이어의 선택에 따라 다음 행동 처리 switch는 case // 실행내용 // break가 끝에 꼭 들어가야함
     switch (choice) {
       case "1": // 공격하기
@@ -76,8 +67,8 @@ const battle = async (stage, player, monster) => {
         // -=는 빼기할당
         monster.hp -= playerDamage;
         logs.push(
-          chalk.yellow(`몬스터에게 ${playerDamage} 만큼 피해를 입혔습니다! `),
-        );
+          chalk.yellow(`몬스터에게 ${playerDamage} 만큼 피해를 입혔습니다! `));
+          playerActionCompleted = true;
         break;
 
       case "2": //연속 공격 (30% 확률)
@@ -97,12 +88,15 @@ const battle = async (stage, player, monster) => {
         break;
 
       case "4": // 도망치기 돔황챠! (55% 확률)
-        console.log(chalk.yellow(`몬스터에게서 무사히 도망쳤습니다!`));
-        return;
 
-      default:
         break;
     }
+      if (monster.hp > 0) {
+        const monsterDamage = monster.attack();
+        player.hp -= monsterDamage;
+        logs.push(chalk.red(`플레이어가 ${monsterDamage} 만큼의 피해를 입었습니다.`))
+      }
+
     logs.push(chalk.green(`${choice}를 선택했습니다.`));
   }
 };
