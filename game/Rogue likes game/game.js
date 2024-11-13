@@ -64,6 +64,7 @@ const battle = async (stage, player, monster) => {
 
     // 플레이어의 선택에 따라 다음 행동 처리 switch는 case // 실행내용 // break가 끝에 꼭 들어가야함
     switch (choice) {
+      // case 1은 기본공격
       case '1': // 공격하기
         const playerDamage = player.attack();
         // -=는 빼기할당
@@ -75,12 +76,7 @@ const battle = async (stage, player, monster) => {
           playerActionCompleted = true;
         break;
 
-      //   if (monster.hp > 0 && playerActionCompleted) {
-      //     const monsterDamage = monster.attack();
-      //     player.hp -= monsterDamage;
-      //     logs.push(chalk.red(`플레이어가 ${monsterDamage} 만큼의 피해를 입었습니다.`));
-      // }
-      
+      // case 2는 연속공격을 하게끔하기
       case '2': //연속 공격 (25% 확률)
         if (Math.random() < 0.25) { // 0.3 이하일 때 연속 공격 성공
           const continuousDamage = player.attack() + player.attack();
@@ -100,11 +96,9 @@ const battle = async (stage, player, monster) => {
         if (Math.random() < 0.3) {
           logs.push(chalk.yellow(`공격 방어에 성공했습니다!`));
           playerActionCompleted = true;
-        } else {
-          const monsterDamage = monster.attack();
+        } else {const monsterDamage = monster.attack();
           player.hp -= monsterDamage;
           logs.push(chalk.red(`방어실패..! 몬스터에게 ${monsterDamage} 데미지를 입었습니다....`));
-          // return;
         }
         playerActionCompleted = true;
         break;
