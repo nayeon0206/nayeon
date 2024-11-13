@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import readlineSync from "readline-sync";
 import displayStatus from "./displayStatus.js";
-
+import Monster from "./Monster.js";
 
 //-----------------------------배틀
 const battle = async (stage, player, monster) => {
@@ -13,7 +13,7 @@ const battle = async (stage, player, monster) => {
     while (player.hp > 0 && monster.hp > 0) {
       console.clear();
       displayStatus(stage, player, monster);
-      // consol.log(`${monster.name}이 나타났다!`)
+    //   consol.log(`${monster.name}이 나타났다!`)
       logs.forEach((log) => console.log(log));
   
       console.log(
@@ -30,7 +30,7 @@ const battle = async (stage, player, monster) => {
           const playerDamage = player.attack();
           // -=는 빼기할당
           monster.hp -= playerDamage;
-          logs.push(chalk.yellow(`몬스터에게 ${playerDamage} 만큼 피해를 입혔습니다! `));
+          logs.push(chalk.yellow(`${monster.name}에게 ${playerDamage} 만큼 피해를 입혔습니다! `));
           const monsterDamage = monster.attack();
               player.hp -= monsterDamage;
               logs.push(chalk.red(`플레이어가 ${monsterDamage} 만큼의 피해를 입었습니다.`));
@@ -39,16 +39,16 @@ const battle = async (stage, player, monster) => {
   
         // case 2는 연속공격을 하게끔하기
         case '2': //연속 공격 (25% 확률)
-          if (Math.random() < 0.25) { // 0.3 이하일 때 연속 공격 성공
+          if (Math.random() < 0.25) { // 0.25 이하일 때 연속 공격 성공
             const continuousDamage = player.attack() + player.attack();
             monster.hp -= continuousDamage;
-            logs.push(chalk.yellow(`연속 공격 성공! 몬스터에게 ${continuousDamage} 데미지를 입혔습니다!`));
+            logs.push(chalk.yellow(`연속 공격 성공! ${monster.name}에게 ${continuousDamage} 데미지를 입혔습니다!`));
             playerActionCompleted = true;
           } else { // 연속 공격 실패 시 몬스터의 반격
-            logs.push(chalk.red(`연속 공격 실패... 몬스터의 반격을 받았습니다!`));
+            logs.push(chalk.red(`연속 공격 실패... ${monster.name}의 반격을 받았습니다!`));
             const monsterDamage = monster.attack();
             player.hp -= monsterDamage;
-            logs.push(chalk.red(`몬스터에게 ${monsterDamage} 데미지를 입었습니다.`));
+            logs.push(chalk.red(`${monster.name}에게 ${monsterDamage} 데미지를 입었습니다.`));
             playerActionCompleted = true;
           }
         break;
@@ -59,19 +59,19 @@ const battle = async (stage, player, monster) => {
             playerActionCompleted = true;
           } else {const monsterDamage = monster.attack();
             player.hp -= monsterDamage;
-            logs.push(chalk.red(`방어실패..! 몬스터에게 ${monsterDamage} 데미지를 입었습니다....`));
+            logs.push(chalk.red(`방어실패..! ${monster.name}에게 ${monsterDamage} 데미지를 입었습니다....`));
           }
           playerActionCompleted = true;
           break;
   
         case '4': // 도망치기 돔황챠! (50% 확률)
         if (Math.random() < 0.5) {
-          console.log(chalk.yellow(`몬스터에게서 무사히 도망쳤습니다!`));
+          console.log(chalk.yellow(`${monster.name}에게서 무사히 도망쳤습니다!`));
           return; // 배틀에서 탈출
         } else {
           const monsterDamage = monster.attack();
           player.hp -= monsterDamage;
-          logs.push(chalk.red(`도망 실패... 몬스터의 공격을 받았습니다: ${monsterDamage} 데미지`));
+          logs.push(chalk.red(`도망 실패... ${monster.name}의 공격을 받았습니다: ${monsterDamage} 데미지`));
         }
         playerActionCompleted = true;
         break;
@@ -86,4 +86,4 @@ const battle = async (stage, player, monster) => {
     }
   };
 
-  export default battle;
+  export default battle

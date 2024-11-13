@@ -6,7 +6,7 @@ class Player {
     constructor() {
       // 플레이어의 체력, 최고공격력, 최소공격력
       this.hp = 100;
-      this.minAtt = 5;
+      this.minAtt = 7;
       this.maxAtt = 25;
     }
   
@@ -17,7 +17,14 @@ class Player {
       return damage;
     }
   
+    // heal() {
+    //     const healAmount = 20;
+    //     this.hp = Math.min(100, this.hp + healAmount);
+    //     this.minAtt += 2;
+    //     this.maxAtt += 2;
+    //     console.log(chalk.green(`보상으로 체력이 ${healAmount} 회복되고, 공격력이 증가했습니다!`));
+    //   }
+
   }
 
-  
-export default Player;
+export default Player
