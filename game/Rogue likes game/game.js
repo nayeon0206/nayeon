@@ -25,7 +25,12 @@ export async function startGame() {
 
   if (player.hp > 0) {
     console.log(
-      chalk.greenBright(`축하합니다 ~! 모든 스테이지를 클리어 했습니다!!`),
-    );
+      chalk.greenBright(`축하합니다 ~! 모든 스테이지를 클리어 했습니다!!`));
+  }else {
+    console.log(chalk.redBright(`플레이어가 사망했습니다..게임이 종료되었습니다.`));
+    const restartChoice = readlineSync.question("New game start? (y / n): ")
+    if(restartChoice.toLowerCase() === "y") {
+      startGame();
+    }
   }
 }
