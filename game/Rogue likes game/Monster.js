@@ -2,8 +2,9 @@
 import chalk from "chalk";
 
 class Monster {
-    constructor() {
-      this.hp = 50;
+    constructor(stage) {
+      this.hp = 50 + stage * 10;
+      this.minAtt = 5 + stage
       
     }
   
@@ -14,16 +15,6 @@ class Monster {
       return damage;
     }
   }
-  
-  // --------------------------displayStatus
-  function displayStatus(stage, player, monster) {
-    console.log(chalk.magentaBright(`\n=== Current Status ===`));
-    console.log(
-      chalk.cyanBright(`| Stage: ${stage} `) +
-        chalk.blueBright(`| 플레이어 체력: ${player.hp} |`,`| 공격력: |`) +
-        chalk.redBright(`| 몬스터 체력: ${monster.hp} |`,`| 공격력: |`),
-    );
-    console.log(chalk.magentaBright(`=====================\n`));
-  }
+
 
   export default Monster;
