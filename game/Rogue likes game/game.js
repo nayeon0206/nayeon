@@ -2,20 +2,29 @@ import chalk from "chalk";
 import readlineSync from "readline-sync";
 
 
-//--------------------------player
+//--------------------------플레이어
 class Player {
   constructor() {
+    // 플레이어의 체력, 최고공격력, 최소공격력
     this.hp = 100;
+    this.minAtt = 5;
+    this.maxAtt = 25;
   }
+
   attack() {
     // 플레이어의 공격
-    const damage = Math.floor(Math.random() * 21) + 5;
+    const damage = Math.floor(Math.random() * (this.maxAtt - this.minAtt + 1)) + this.minAtt;
     console.log(chalk.blue(`플레이어가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
+
+  rewords() {
+    const gamerewords = 
+  }
+
 }
 
-//--------------------------monster
+//--------------------------몬스터
 class Monster {
   constructor() {
     this.hp = 50;
@@ -24,7 +33,7 @@ class Monster {
 
   attack() {
     // 몬스터의 공격
-    const damage = Math.floor(Math.random() * 16) + 5;
+    const damage = Math.floor(Math.random() * 15) + 5;
     console.log(chalk.red(`몬스터가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
@@ -41,7 +50,7 @@ function displayStatus(stage, player, monster) {
   console.log(chalk.magentaBright(`=====================\n`));
 }
 
-//-----------------------------battle
+//-----------------------------배틀
 const battle = async (stage, player, monster) => {
   let logs = [];
   // playerActionCompleted라는 조건을 적용하여 플레이어의 행동이 완료된 후 몬스터의 공격이 발생
@@ -56,8 +65,7 @@ const battle = async (stage, player, monster) => {
 
     console.log(
       chalk.green(
-        `\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (30%) 4. 도망치기! 돔황챠! (50%) `,
-      ),
+        `\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (30%) 4. 도망치기! 돔황챠! (50%) `),
     );
     const choice = readlineSync.question("your choice? ");
     playerActionCompleted = false;
