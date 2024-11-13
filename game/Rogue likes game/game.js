@@ -2,20 +2,29 @@ import chalk from "chalk";
 import readlineSync from "readline-sync";
 
 
-//--------------------------player
+//--------------------------플레이어
 class Player {
   constructor() {
+    // 플레이어의 체력, 최고공격력, 최소공격력
     this.hp = 100;
+    this.minAtt = 5;
+    this.maxAtt = 25;
   }
+
   attack() {
     // 플레이어의 공격
-    const damage = Math.floor(Math.random() * 21) + 5;
+    const damage = Math.floor(Math.random() * (this.maxAtt - this.minAtt + 1)) + this.minAtt;
     console.log(chalk.blue(`플레이어가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
+
+  rewords() {
+    const gamerewords = 
+  }
+
 }
 
-//--------------------------monster
+//--------------------------몬스터
 class Monster {
   constructor() {
     this.hp = 50;
@@ -24,7 +33,7 @@ class Monster {
 
   attack() {
     // 몬스터의 공격
-    const damage = Math.floor(Math.random() * 16) + 5;
+    const damage = Math.floor(Math.random() * 15) + 5;
     console.log(chalk.red(`몬스터가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
@@ -41,7 +50,7 @@ function displayStatus(stage, player, monster) {
   console.log(chalk.magentaBright(`=====================\n`));
 }
 
-//-----------------------------battle
+//-----------------------------배틀
 const battle = async (stage, player, monster) => {
   let logs = [];
   // playerActionCompleted라는 조건을 적용하여 플레이어의 행동이 완료된 후 몬스터의 공격이 발생
@@ -56,14 +65,14 @@ const battle = async (stage, player, monster) => {
 
     console.log(
       chalk.green(
-        `\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (30%) 4. 도망치기! 돔황챠! (50%) `,
-      ),
+        `\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (30%) 4. 도망치기! 돔황챠! (50%) `),
     );
     const choice = readlineSync.question("your choice? ");
     playerActionCompleted = false;
 
     // 플레이어의 선택에 따라 다음 행동 처리 switch는 case // 실행내용 // break가 끝에 꼭 들어가야함
     switch (choice) {
+      // case 1은 기본공격
       case '1': // 공격하기
         const playerDamage = player.attack();
         // -=는 빼기할당
@@ -75,12 +84,7 @@ const battle = async (stage, player, monster) => {
           playerActionCompleted = true;
         break;
 
-      //   if (monster.hp > 0 && playerActionCompleted) {
-      //     const monsterDamage = monster.attack();
-      //     player.hp -= monsterDamage;
-      //     logs.push(chalk.red(`플레이어가 ${monsterDamage} 만큼의 피해를 입었습니다.`));
-      // }
-      
+      // case 2는 연속공격을 하게끔하기
       case '2': //연속 공격 (25% 확률)
         if (Math.random() < 0.25) { // 0.3 이하일 때 연속 공격 성공
           const continuousDamage = player.attack() + player.attack();
@@ -100,11 +104,9 @@ const battle = async (stage, player, monster) => {
         if (Math.random() < 0.3) {
           logs.push(chalk.yellow(`공격 방어에 성공했습니다!`));
           playerActionCompleted = true;
-        } else {
-          const monsterDamage = monster.attack();
+        } else {const monsterDamage = monster.attack();
           player.hp -= monsterDamage;
           logs.push(chalk.red(`방어실패..! 몬스터에게 ${monsterDamage} 데미지를 입었습니다....`));
-          // return;
         }
         playerActionCompleted = true;
         break;
