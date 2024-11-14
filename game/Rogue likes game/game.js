@@ -1,6 +1,6 @@
 import Player from "./Player.js";
 import Monster from "./Monster.js";
-import battle from "./battle.js";
+import battle from "./Battle.js";
 import chalk from "chalk";
 import readlineSync from "readline-sync";
 
