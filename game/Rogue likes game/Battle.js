@@ -30,7 +30,7 @@ const battle = async (stage, player, monster) => {
           const playerDamage = player.attack();
           // -=는 빼기할당
           monster.hp -= playerDamage;
-          logs.push(chalk.yellow(`${monster.name}에게 ${playerDamage} 만큼 피해를 입혔습니다! `));
+          logs.push(chalk.blue(`${monster.name}에게 ${playerDamage} 만큼 피해를 입혔습니다! `));
           const monsterDamage = monster.attack();
               player.hp -= monsterDamage;
               logs.push(chalk.red(`플레이어가 ${monsterDamage} 만큼의 피해를 입었습니다.`));
@@ -43,11 +43,11 @@ const battle = async (stage, player, monster) => {
             //첫번째 공격
             const firstAttackDamage = player.attack();
             monster.hp -= firstAttackDamage;
-            logs.push(chalk.yellow(`연속 공격 성공!`,`\n 첫 번째 공격으로 ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`));
+            logs.push(chalk.blue(`연속 공격 성공!`,`\n 첫 번째 공격으로 ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`));
             // 두번째 공격
             const secondAttackDamage = player.attack();
             monster.hp -= secondAttackDamage;
-            logs.push(chalk.yellow(`두 번째 공격으로 ${monster.name}에게 ${secondAttackDamage} 데미지를 입혔습니다!`));
+            logs.push(chalk.blue(`두 번째 공격으로 ${monster.name}에게 ${secondAttackDamage} 데미지를 입혔습니다!`));
 
             playerActionCompleted = true;
 
@@ -74,23 +74,21 @@ const battle = async (stage, player, monster) => {
         case '4': // 도망치기 돔황챠! (50% 확률)
         if (Math.random() < 0.5) {
           console.log(chalk.yellow(`${monster.name}에게서 무사히 도망쳤습니다!`));
-          return; // 배틀에서 탈출
+          return false; // 배틀에서 탈출
         } else {
           const monsterDamage = monster.attack();
           player.hp -= monsterDamage;
           logs.push(chalk.red(`도망 실패... ${monster.name}의 공격을 받았습니다: ${monsterDamage} 데미지`));
         }
-        playerActionCompleted = true;
         break;
   
         default:
           console.log(chalk.red("잘못된 선택입니다. 다시 선택해주세요."));
           continue;
       };
-  
-      
       logs.push(chalk.green(`${choice}를 선택했습니다.`));
     }
+    return player.hp > 0;
   };
 
   export default battle
