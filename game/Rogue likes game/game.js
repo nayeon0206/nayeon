@@ -21,9 +21,11 @@ export async function startGame() {
         
         //스테이지 클리어 시 능력치 중 하나 무작위로 증가
         const rewardMessage = player.increaseRandomStat();
-      console.log(chalk.green(`\n스테이지 클리어보상: ${rewardMessage}`));
+      console.log(chalk.magentaBright(`스테이지 클리어보상: ${rewardMessage}`));
 
-
+      //엔터 입력 후 다음 스테이지로 이동하기
+      readlineSync.question(chalk.cyan(`\nPress Enter to move to next...`));
+      console.clear();
       stage++;
     }
   }
