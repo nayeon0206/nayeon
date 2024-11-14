@@ -14,7 +14,7 @@ class Player {
   attack() {
     // 플레이어의 공격
     const damage = Math.floor(Math.random() * (this.maxAtt - this.minAtt + 1)) + this.minAtt;
-    console.log(chalk.yellow(`플레이어가 ${damage} 데미지를 입혔습니다.`));
+    // console.log(chalk.yellow(`플레이어가 ${damage} 데미지를 입혔습니다.`));
     return damage;
   }
 

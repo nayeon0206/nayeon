@@ -20,6 +20,7 @@ const battle = async (stage, player, monster) => {
     );
     const choice = readlineSync.question('your choice? ');
 
+    logs.push(chalk.yellowBright(`\n${choice} 번을 선택하셨습니다.`));
 
     // 플레이어의 선택에 따라 다음 행동 처리 switch는 case // 실행내용 // break가 끝에 꼭 들어가야함
     switch (choice) {
@@ -44,7 +45,7 @@ const battle = async (stage, player, monster) => {
           logs.push(
             chalk.blue(
               `연속 공격 성공!`,
-              `\n 첫 번째 공격으로 ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`,
+              `\n첫 번째 공격으로 ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`,
             ),
           );
           // 두번째 공격
@@ -68,19 +69,19 @@ const battle = async (stage, player, monster) => {
 
       case '3': // 방어하기 (30퍼센트 확률)
         if (Math.random() < player.defendChance) {
-          logs.push(chalk.yellow(`방어에 성공했습니다!${monster.name}의 공격을 막아냈습니다!!`));
+          logs.push(chalk.yellow(`\n방어에 성공했습니다!${monster.name}의 공격을 막아냈습니다!!`));
         } else {
           const monsterDamage = monster.attack();
           player.hp -= monsterDamage;
           logs.push(
-            chalk.red(`방어실패..! ${monster.name}에게 ${monsterDamage} 데미지를 입었습니다....`),
+            chalk.red(`\n방어실패..! ${monster.name}에게 ${monsterDamage} 데미지를 입었습니다....`),
           );
         }
         break;
 
       case '4': // 도망치기 돔황챠! (50% 확률)
         if (Math.random() < 0.5) {
-          console.log(chalk.yellow(`${monster.name}에게서 무사히 도망쳤습니다!`));
+          console.log(chalk.yellow(`\n${monster.name}에게서 무사히 도망쳤습니다!`));
           return 'escaped'; // 배틀에서 탈출
         } else {
           const monsterDamage = monster.attack();
@@ -95,7 +96,8 @@ const battle = async (stage, player, monster) => {
         console.log(chalk.red('잘못된 선택입니다. 다시 선택해주세요.'));
         continue;
     }
-    logs.push(chalk.green(`${choice}를 선택했습니다.`));
+    
+    logs.forEach(log => console.log(log)); // 모든 로그를 출력
   }
   // 배틀 결과 확인..이겼는지 졌는지
   return player.hp > 0 ? 'won' : 'lost';

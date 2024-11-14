@@ -3,7 +3,7 @@ import chalk from "chalk";
 
 class Monster {
     constructor(stage) {
-      this.hp = 40 + stage * 10;
+      this.hp = 30 + stage * 10;
       this.minAtt = 3 + stage * 2;
       this.maxAtt = 10 + stage * 2;
   
@@ -14,7 +14,7 @@ class Monster {
     attack() {
       // 몬스터의 공격
       const damage = Math.floor(Math.random() * (this.maxAtt - this.minAtt + 1)) + this.minAtt;
-      console.log(chalk.red(`${this.name}(이)가 ${damage} 데미지를 입혔습니다.`));
+      // console.log(chalk.red(`${this.name}(이)가 ${damage} 데미지를 입혔습니다.`));
       return damage;
     }
   }
