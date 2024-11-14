@@ -72,6 +72,8 @@ switch (day) {
 }
 
 // 예시 5: 삼항 연산자를 사용한 조건문
+// let value = (조건) ? 조건이 맞으면 실행 : 조건이 틀릴때 실행;
+
 const age = 18;
 const canVote = age >= 18 ? '투표할 수 있습니다.' : '투표할 수 없습니다.';
 console.log('예시 5: ' + canVote);

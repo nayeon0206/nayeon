@@ -15,7 +15,7 @@
 
 // 1. 숫자(Number)
 const age = 25; // 나이를 숫자로 저장합니다.
-
+// console.log(typeof age)
 // 2. BigInt
 const bigNumber = 1234567890123456789012345678901234567890n; // 1. 매우 큰 정수를 저장합니다. 끝에 'n'을 붙입니다. 2. 일반 number type은 최대 15자리 정수까지만 정확히 표현
 
@@ -41,11 +41,12 @@ obj[uniqueKey] = '이 값은 고유한 키로 저장됩니다';
 console.log('예시 7: ', obj[uniqueKey]); // '이 값은 고유한 키로 저장됩니다' 출력
 
 // 8. 객체(Object)
+// key - value
 const person = {
   name: '홍길동',
   age: 25,
 }; // 여러 값을 키와 값으로 저장합니다.
-
+// console.log(person.location)
 // 배열(Array)도 객체의 한 종류입니다.
 const fruits = ['사과', '바나나', '포도']; // 여러 값을 순서대로 저장합니다.
 
@@ -55,7 +56,7 @@ console.log(typeof age); // "number"
 console.log(typeof name); // "string"
 console.log(typeof isStudent); // "boolean"
 console.log(typeof address); // "undefined"
-console.log(typeof emptyValue); // "object" (null의 타입은 object로 표시됩니다.)
+console.log(typeof emptyValue); // "object" (null의 타입은 object로 표시됩니다.자바스크립트의 버그)
 console.log(typeof person); // "object"
 console.log(typeof fruits); // "object"
 console.log('============= 데이터 타입 확인 종료 =============');
