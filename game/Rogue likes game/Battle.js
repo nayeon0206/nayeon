@@ -40,10 +40,17 @@ const battle = async (stage, player, monster) => {
         // case 2는 연속공격을 하게끔하기
         case '2': //연속 공격 (25% 확률)
           if (Math.random() < 0.25) { // 0.25 이하일 때 연속 공격 성공
-            const continuousDamage = player.attack() + player.attack();
-            monster.hp -= continuousDamage;
-            logs.push(chalk.yellow(`연속 공격 성공! ${monster.name}에게 ${continuousDamage} 데미지를 입혔습니다!`));
+            //첫번째 공격
+            const firstAttackDamage = player.attack();
+            monster.hp -= firstAttackDamage;
+            logs.push(chalk.yellow(`연속 공격 성공! ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`));
+            // 두번째 공격
+            const secondAttackDamage = player.attack();
+            monster.hp -= secondAttackDamage;
+            logs.push(chalk.yellow(`두 번째 공격으로 몬스터에게 ${secondAttackDamage} 데미지를 입혔습니다!`));
+
             playerActionCompleted = true;
+
           } else { // 연속 공격 실패 시 몬스터의 반격
             logs.push(chalk.red(`연속 공격 실패... ${monster.name}의 반격을 받았습니다!`));
             const monsterDamage = monster.attack();
