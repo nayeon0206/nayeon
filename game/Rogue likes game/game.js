@@ -18,7 +18,7 @@ export async function startGame() {
     if (player.hp > 0) {
       console.log(
         chalk.blueBright(` ${stage} 스테이지 클리어! 다음 스테이지로 !`));
-      // player.gamerewords();
+      
       stage++;
     }
   }
