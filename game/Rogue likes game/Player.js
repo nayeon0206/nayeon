@@ -6,7 +6,7 @@ class Player {
   constructor() {
     // 플레이어의 체력, 최고공격력, 최소공격력, 공격 방어
     this.hp = 100;
-    this.minAtt = 7;
+    this.minAtt = 10;
     this.maxAtt = 25;
     this.defendChance = 0.3;
   }
@@ -19,26 +19,26 @@ class Player {
   }
 
   increaseRandomStat() {
-    const statOptions = ['hp', 'minAtt', 'maxAtt', 'defendChans'];
+    const statOptions  = ["hp", "minAtt", "maxAtt", "defendChance"];
     const chosenStat = statOptions[Math.floor(Math.random() * statOptions.length)];
     let rewardMessage = "";
 
     switch (chosenStat) {
-      case 'hp':
+      case "hp":
         this.hp += 25;
-        console.log(chalk.greenBright(`체력이 25 증가했습니다!`));
+        rewardMessage = "체력이 25 증가했습니다!";
         break;
-      case 'minAtt':
-        this.minAtt += 3;
-        console.log(chalk.greenBright(`최소 공격력이 3 증가했습니다!`));
+      case "minAtt":
+        this.minAtt += 5;
+        rewardMessage = "최소 공격력이 5 증가했습니다!";
         break;
-      case 'maxAtt':
-        this.maxAtt += 0.5;
-        console.log(chalk.greenBright(`최대 공격력이 0.5 증가했습니다!`));
+      case "maxAtt":
+        this.maxAtt += 7;
+        rewardMessage = "최대 공격력이 7 증가했습니다!";
         break;
-      case 'defendChance':
+      case "defendChance":
         this.defendChance += 0.05;
-        console.log(chalk.greenBright(`방어 확률이 5% 증가했습니다!`));
+        rewardMessage = "방어 확률이 5% 증가했습니다!";
         break;
     }
     return rewardMessage;
