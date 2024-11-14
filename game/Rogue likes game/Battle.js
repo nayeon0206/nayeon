@@ -38,7 +38,7 @@ const battle = async (stage, player, monster) => {
           break;
   
         // case 2는 연속공격을 하게끔하기
-        case '2': //연속 공격 (25% 확률)
+        case '2': //연속 공격 (25% 확률) // Math.random()이라는 함수가 0과 1사이에 있는 숫자를 입력 해야 함. 30%라고 30을 넣으면 안됨!!
           if (Math.random() < 0.25) { // 0.25 이하일 때 연속 공격 성공
             //첫번째 공격
             const firstAttackDamage = player.attack();
