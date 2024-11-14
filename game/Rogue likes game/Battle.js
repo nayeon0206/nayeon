@@ -21,6 +21,11 @@ const battle = async (stage, player, monster) => {
     );
     const choice = readlineSync.question('your choice? ');
 
+    if (choice !== '1' && choice !== '2' && choice !== '3' && choice !== '4') {
+      console.log(chalk.red('유효하지 않은 선택입니다! 다시 선택해주세요.'));
+      continue;  // 잘못된 입력이 들어오면 다시 반복문 시작
+    }
+
     logs.push(chalk.yellowBright(`\n${choice} 번을 선택하셨습니다.`));
 
     // 플레이어의 선택에 따라 다음 행동 처리 switch는 case // 실행내용 // break가 끝에 꼭 들어가야함
@@ -92,10 +97,6 @@ const battle = async (stage, player, monster) => {
           );
         }
         break;
-
-      default:
-        console.log(chalk.red('잘못된 선택입니다. 다시 선택해주세요.'));
-        continue;
     }
     
     logs.forEach(log => console.log(log)); // 모든 로그를 출력
