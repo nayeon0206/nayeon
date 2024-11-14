@@ -38,6 +38,8 @@ class Player {
         break;
       case "defendChance":
         this.defendChance += 0.05;
+        // 방어 확률이 1을 초과하지 않게 하는 함수
+        if (this.defendChance > 1) this.defendChance = 1;
         rewardMessage = "방어 확률이 5% 증가했습니다!";
         break;
     }
