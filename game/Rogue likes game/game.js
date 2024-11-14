@@ -17,8 +17,13 @@ export async function startGame() {
     // 스테이지 클리어 및 게임 종료 조건
     if (player.hp > 0) {
       console.log(
-        chalk.blueBright(` ${stage} 스테이지 클리어! 다음 스테이지로 !`));
-      
+        chalk.blueBright(` ${stage} 스테이지 클리어!!`));
+        
+        //스테이지 클리어 시 능력치 중 하나 무작위로 증가
+        const rewardMessage = player.increaseRandomStat();
+      console.log(chalk.green(`\n스테이지 클리어보상: ${rewardMessage}`));
+
+
       stage++;
     }
   }

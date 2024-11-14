@@ -61,8 +61,8 @@ const battle = async (stage, player, monster) => {
         break;
   
         case '3': // 방어하기 (30퍼센트 확률)
-          if (Math.random() < 0.3) {
-            logs.push(chalk.yellow(`공격 방어에 성공했습니다!`));
+          if (Math.random() < player.defendChance) { //player.defendChance를 써서 방어력이 올라가게 바꿔야함
+            logs.push(chalk.yellow(`방어에 성공했습니다!${monster.name}의 공격을 막아냈습니다!!`));
             playerActionCompleted = true;
           } else {const monsterDamage = monster.attack();
             player.hp -= monsterDamage;
