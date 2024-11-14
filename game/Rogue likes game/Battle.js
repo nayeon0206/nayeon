@@ -6,8 +6,9 @@ import displayStatus from './displayStatus.js';
 //-----------------------------배틀
 const battle = async (stage, player, monster) => {
   let logs = [];
-  // playerActionCompleted라는 조건을 적용하여 플레이어의 행동이 완료된 후 몬스터의 공격이 발생
 
+ // 몬스터 등장 메시지
+ logs.push(chalk.redBright(`앗, ${monster.name}(이)가 나타났다!!`));
 
   // 몬스터나 플레이어 둘 중 하나의 체력이 0이 될때 까지 반복해야함
   while (player.hp > 0 && monster.hp > 0) {
@@ -16,7 +17,7 @@ const battle = async (stage, player, monster) => {
     logs.forEach((log) => console.log(log));
 
     console.log(
-      chalk.green(`\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (30%) 4. 도망치기! 돔황챠! (50%) `),
+      chalk.green(`\n1. 공격하기 2. 연속 공격 (25%) 3. 방어하기 (${(player.defendChance * 100).toFixed(0)}%) 4. 도망치기! 돔황챠! (50%) `),
     );
     const choice = readlineSync.question('your choice? ');
 

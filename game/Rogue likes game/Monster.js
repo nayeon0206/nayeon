@@ -3,11 +3,11 @@ import chalk from "chalk";
 
 class Monster {
     constructor(stage) {
-      this.hp = 30 + stage * 10;
+      this.hp = 20 + stage * 10;
       this.minAtt = 3 + stage * 2;
       this.maxAtt = 10 + stage * 2;
   
-    const monsterNames = ["박쥐", "늑대", "슬라임", "좀비"];
+    const monsterNames = ["박쥐", "늑대", "슬라임", "좀비", "두꺼비", "드래곤"];
     this.name = monsterNames[Math.floor(Math.random() * monsterNames.length)];
     }
 
