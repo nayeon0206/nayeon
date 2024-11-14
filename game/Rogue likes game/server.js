@@ -68,7 +68,7 @@ function handleUserInput() {
             process.exit(0); // 게임 종료
             break;
         default:
-            console.log(chalk.red('올바른 선택을 하세요.'));
+            console.log(chalk.red('유효하지 않은 입력값입니다.'));
             handleUserInput(); // 유효하지 않은 입력일 경우 다시 입력 받음
     }
 }

@@ -21,13 +21,13 @@ export async function startGame() {
       const rewardMessage = player.increaseRandomStat();
       console.log(chalk.green(`\n스테이지 클리어 보상: ${rewardMessage}`));
 
-      readlineSync.question(chalk.cyan(`\nPress Enter to move to next...`));
+      readlineSync.question(chalk.cyan(`\nPress Enter to move to the next stage...`));
       console.clear();
       stage++;
     } else if (battleResult === 'escaped') {
       // 도망에 성공 시
       console.log(chalk.yellow(`새로운 몬스터가 나타납니다!`));
-      readlineSync.question(chalk.cyan(`\nPress Enter to move to next...`));
+      readlineSync.question(chalk.cyan(`\nPress Enter to move to the next stage...`));
       console.clear();
       stage;
     } else if (battleResult === 'null') {
@@ -36,8 +36,11 @@ export async function startGame() {
       continue; // 현재 몬스터와 전투 지속
     } else {
       // 전투에서 패배 시 (플레이어 사망)
-      console.log(chalk.red(`플레이어가 쓰러졌습니다... 게임 종료.`));
-      return;
+      console.log(chalk.redBright(`플레이어가 사망했습니다..게임이 종료되었습니다.`));
+      const restartChoice = readlineSync.question(chalk.blueBright(`\nNew game start? (y / n): `));
+      if (restartChoice.toLowerCase() === 'y') {
+        startGame();
+      }
     }
   }
 
