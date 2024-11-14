@@ -43,7 +43,7 @@ const battle = async (stage, player, monster) => {
             //첫번째 공격
             const firstAttackDamage = player.attack();
             monster.hp -= firstAttackDamage;
-            logs.push(chalk.yellow(`연속 공격 성공! ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`));
+            logs.push(chalk.yellow(`연속 공격 성공!`,`\n 첫 번째 공격으로 ${monster.name}에게 ${firstAttackDamage} 데미지를 입혔습니다!`));
             // 두번째 공격
             const secondAttackDamage = player.attack();
             monster.hp -= secondAttackDamage;
