@@ -22,3 +22,7 @@
 //     }
 //     return array;
 // }
+
+function insertionSort (array) {
+    
+}
