@@ -1,6 +1,3 @@
-// modules/math.js
-
-// add 함수를 외부로 노출시킵니다.
-export function add(a, b) {
-    return a + b;
-   }
+export default function () {
+    console.log('src/libs/math.js 파일입니다.');
+  }
