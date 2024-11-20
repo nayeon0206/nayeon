@@ -1,8 +1,13 @@
-// modules/run.js
+// src/libs/run.js 
 
-// ./math.js 파일에서 add 함수를 가져옵니다.
-import { add } from './math.js'
+import math from './math.js';
+// import baseException from '../exception/base.exception.js';
+// import authenticationMiddleware from '../middleware/authentication/authentication.middleware.js';
 
-console.log(add(3, 4)); // import한 add 함수를 실행합니다.
+math();
+// baseException();
+// authenticationMiddleware();
 
-// Print: 7
+// Print: src/libs/math.js 파일입니다.
+// Print: src/exception/base.exception.js 파일입니다.
+// Print: src/middleware/authentication.middleware.js 파일입니다.
