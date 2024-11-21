@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
-});
 
 // localhost:3000/api -> goodsRouter
 // localhost:3000/api -> newsRouter
