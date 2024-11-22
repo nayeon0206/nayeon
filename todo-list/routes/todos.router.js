@@ -11,6 +11,8 @@ router.post('/todos', async (req, res, next) => {
   const { value } = req.body;
 
   // Todo모델을 사용해, MongoDB에서 'order' 값이 가장 높은 '해야할 일'을 찾습니다.
+  // findOne = 1개의 데이터만 조회한다.
+  // sort = 정렬한다. -> 어떤 컬럼을? -를 붙이면 내림차순으로 정렬됨
   const todoMaxOrder = await Todo.findOne().sort('-order').exec();
 
   // 'order' 값이 가장 높은 도큐멘트의 1을 추가하거나 없다면, 1을 할당합니다.
@@ -18,10 +20,9 @@ router.post('/todos', async (req, res, next) => {
 
   // Todo모델을 이용해, 새로운 '해야할 일'을 생성합니다.
   const todo = new Todo({ value, order });
+    await todo.save();
 
   // 생성한 '해야할 일'을 MongoDB에 저장합니다.
-  await todo.save();
-
   return res.status(201).json({ todo });
 });
 
