@@ -15,8 +15,26 @@ app.use(express.urlencoded({ extended: true }));
 // from content type에서 body 데이터를 전달하면, req.body에 데이터를 변환하여 넣어준다.
 // 프론트엔드분들과 협업을 하게 된다면 이런 방식으로 사용해야함
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+/** 상품 등록 리팩토링 **/
+// localhost:3000/api/goods POST
+router.post('/goods', (req, res) => {
+  // 객체 구조 분해 할당 적용하기.
+  const { name, thumbnailUrl, category, price } = req.body;
+
+  const goodsId = goods[goods.length - 1].goodsId + 1; // 현재 goodsId의 가장 큰 값 + 1
+
+  // 객체 구조 분해 할당 적용하기.
+  const goodsItem = {
+    goodsId,
+    name,
+    thumbnailUrl,
+    category,
+    price,
+  };
+  goods.push(goodsItem);
+
+  return res.status(201).json({ goods: goodsItem });
+});
 
 // localhost:3000/api -> goodsRouter
 // localhost:3000/api -> newsRouter
