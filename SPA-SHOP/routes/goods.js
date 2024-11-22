@@ -54,7 +54,7 @@ router.get('/goods', (req, res) => {
 
 // /routes/goods.js
 
-/** 상품 상세 조회 **/
+/** 상품 상세 조회 api **/
 // localhost:3000/api/goods/:goodsId
 router.get('/goods/:goodsId', (req, res) => {
   // 1. 상품의 id조회 하고
@@ -66,6 +66,35 @@ router.get('/goods/:goodsId', (req, res) => {
   const findgoods = goods.find((onegoods) => onegoods.goodsId === +goodsId);
 
   return res.status(200).json({goods: findgoods});
+});
+
+// 상품 등록 api 
+// localhost:3000/api/goods/
+router.get('/goods/:goodsId', (req, res) => { 
+  // 1. name,thumbnailUrl, category, price를 req.body로 전달받는다.
+  // 2. 해당하는 데이터를 바탕으로 상품을 등록한다.
+  // 3. 등록된 상품 데이터를 클라이언트에게 반환한다.
+
+  const name = req.body.name;
+  const thumbnailUrl = req.body.thumbnailUrl;
+  const category =  req.body.category;
+  const price =  req.body.price;
+
+  // +1 된 goodsId를 가져온다
+  const goodsId = goods[goods.length - 1].goodsId + 1;
+
+  const goodsItem = {
+    goodsId: goodsId,
+    name: name,
+    thumbnailUrl:thumbnailUrl,
+    category:category,
+    price:price
+  }
+
+  goods.push(goodsItem);
+
+  return res.status(201).json({goods:goodsItem});
+
 });
 
 
