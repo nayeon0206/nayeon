@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 const connect = () => {
   mongoose
     .connect(
-      'mongodb+srv://sparta-user:aaaa4321@express-mongo.uy7ttg7.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://skdusdl4:slek970206@express-mongo.g6isz.mongodb.net/?retryWrites=true&w=majority&appName=express-mongo',
       {
         dbName: 'spa_mall', // spa_mall 데이터베이스명을 사용합니다.
       },
