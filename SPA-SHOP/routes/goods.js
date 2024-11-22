@@ -1,101 +1,41 @@
-// routes/goods.js
-
+// /routes/goods.js
 import express from 'express';
+import Goods from '../schemas/goods.js';
+import mongoose from 'mongoose';
+// 1. mongoose, Goods모델 가져오기!
 
 
+// Express.js의 라우터를 생성합니다.
+// 2. api를 구현한다.
 const router = express.Router();
 
+/** 상품 등록 **/
+// localhost:3000/api/goods POST
+router.post('/goods', async (req, res) => {
+  // 3. 클라이언트로부터 전달받은 데이터를 가져온다. 
+  // goodsId, name, thumbnailUrl, category, price
+  const { goodsId, name, thumbnailUrl, category, price } = req.body;
 
-// /routes/goods.js
+  // 4. goodsId 중복되지 않았는지 검사한다. => 실제로 mongodb에 데이터를 조회해서, 해당하는 데이터가 mongodb에 존재하는지 확인한다.
+  const goods = await Goods.find({ goodsId: goodsId }).exec(); // mongodb에서 조회할 때는 .exec를 붙여야한다. 데이터를 생성할 떄는 사용이 안됨
 
-const goods = [
-  {
-    goodsId: 1,
-    name: '상품 1',
-    thumbnailUrl:
-      'https://cdn.pixabay.com/photo/2016/09/07/19/54/wines-1652455_1280.jpg',
-    category: 'drink',
-    price: 6.2,
-  },
-  {
-    goodsId: 2,
-    name: '상품 2',
-    thumbnailUrl:
-      'https://cdn.pixabay.com/photo/2014/08/26/19/19/wine-428316_1280.jpg',
-    category: 'drink',
-    price: 0.11,
-  },
-  {
-    goodsId: 3,
-    name: '상품 3',
-    thumbnailUrl:
-      'https://cdn.pixabay.com/photo/2016/09/07/02/12/frogs-1650658_1280.jpg',
-    category: 'drink',
-    price: 2.2,
-  },
-  {
-    goodsId: 4,
-    name: '상품 4',
-    thumbnailUrl:
-      'https://cdn.pixabay.com/photo/2016/09/07/02/11/frogs-1650657_1280.jpg',
-    category: 'drink',
-    price: 0.1,
-  },
-];
-
-// 상품 목록 조회 api// 
-// http://localhost:3000/api/goods
-// 조회 메서드로 get을 사용
-router.get('/goods', (req, res) => {
-  return res.status(200).json({
-    goods: goods,
-  })
-});
-
-// /routes/goods.js
-
-/** 상품 상세 조회 api **/
-// localhost:3000/api/goods/:goodsId
-router.get('/goods/:goodsId', (req, res) => {
-  // 1. 상품의 id조회 하고
-  // 2. 상품 id와 일치 하는 데이터를 찾고
-  // 3. 조회된 상품 정보를 return한다.
-
-// 경로 매개변수 = req.params로 가지고 온다.
-  const goodsId = req.params.goodsId;
-  const findgoods = goods.find((onegoods) => onegoods.goodsId === +goodsId);
-
-  return res.status(200).json({goods: findgoods});
-});
-
-// 상품 등록 api 
-// localhost:3000/api/goods/
-router.get('/goods/:goodsId', (req, res) => { 
-  // 1. name,thumbnailUrl, category, price를 req.body로 전달받는다.
-  // 2. 해당하는 데이터를 바탕으로 상품을 등록한다.
-  // 3. 등록된 상품 데이터를 클라이언트에게 반환한다.
-
-  const name = req.body.name;
-  const thumbnailUrl = req.body.thumbnailUrl;
-  const category =  req.body.category;
-  const price =  req.body.price;
-
-  // +1 된 goodsId를 가져온다
-  const goodsId = goods[goods.length - 1].goodsId + 1;
-
-  const goodsItem = {
-    goodsId: goodsId,
-    name: name,
-    thumbnailUrl:thumbnailUrl,
-    category:category,
-    price:price
+// 4-1. 만약, goodsId가 중복된다면, 에러메시지를 전달한다.
+  if (goods.length) {
+    return res
+      .status(400)
+      .json({ success: false, errorMessage: '이미 존재하는 데이터입니다.' });
   }
+// 5. 상품(goods)를 생성
+  const createdGoods = await Goods.create({
+    goodsId,
+    name,
+    thumbnailUrl,
+    category,
+    price,
+  });
 
-  goods.push(goodsItem);
-
-  return res.status(201).json({goods:goodsItem});
-
+// 6. 생성된 상품 정보를 클라이언트에게 응답(Response)반환 한다.
+  return res.status(201).json({ goods: createdGoods });
 });
 
-
-  export default router;
+export default router;
