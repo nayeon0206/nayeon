@@ -4,7 +4,7 @@
 // n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.
 
 //정수 n이 양의 정수 x의 제곱이면 x+1의 제곱을 리턴,
-// n이 양의정수 x의 제곱이 아니라면 -1을 리턴
+// n이 양의 정수 x의 제곱이 아니라면 -1을 리턴
 
 function solution(n) { 
     
@@ -24,9 +24,10 @@ function solution(n) {
 // 또 다른 풀이
 function solution(n) {
     var answer = 0;
+    let a = 0;
 
     // for 문으로 i 와 a 의 값을 0으로 선언해준 뒤, i 를 n만큼 증가시켜줍니다.
-    for(let i=0, a=0; i<=n; i++){
+    for(let i=0; i<=n; i++){
 
         // 만약 n / i 가 i 와 완벽하게 같다면 a 에 i + 1 의 값을 대입해주고, 대입된 a 를 a * a 하여 답으로 제출
         if(n/i===i){
