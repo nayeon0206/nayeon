@@ -1,8 +1,9 @@
 // /schemas/goods.js
-
+// 1. mongoose 가져오기
 import mongoose from 'mongoose';
 
 // 상품(goods)에 대한 정보를 나타내는 스키마를 정의합니다.
+// 2. 스키마 작성하기
 const goodsSchema = new mongoose.Schema({
   goodsId: {
     type: Number, // 상품의 고유 ID를 나타냅니다.
@@ -26,4 +27,6 @@ const goodsSchema = new mongoose.Schema({
 });
 
 // 위에서 정의한 스키마를 이용하여 'Goods'라는 이름의 모델을 생성합니다.
+// 3. 스키마를 통해 모델 구현하기
+// 4. 모델 외부로 보내기
 export default mongoose.model('Goods', goodsSchema);
