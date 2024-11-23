@@ -33,10 +33,10 @@
               {
                 headers: {
                   authorization: "Bearer ".concat(
-                    localStorage.getItem("token"),
+                    localStorage.getItem("token")
                   ),
                 },
-              },
+              }
             );
           },
           editTodo: (function () {
@@ -71,18 +71,18 @@
                             {
                               headers: {
                                 authorization: "Bearer ".concat(
-                                  localStorage.getItem("token"),
+                                  localStorage.getItem("token")
                                 ),
                               },
-                            },
-                          ),
+                            }
+                          )
                         );
                       case 4:
                       case "end":
                         return e.stop();
                     }
                 }, e);
-              }),
+              })
             );
             return function (t) {
               return e.apply(this, arguments);
@@ -174,7 +174,7 @@
                             h(
                               null === (a = t.t0.response) || void 0 === a
                                 ? void 0
-                                : a.data,
+                                : a.data
                             ),
                               (t.next = 17);
                             break;
@@ -189,11 +189,11 @@
                     },
                     t,
                     null,
-                    [[3, 10, 17, 20]],
+                    [[3, 10, 17, 20]]
                   );
-                }),
+                })
               ),
-              [e],
+              [e]
             ),
             i,
             r,
@@ -296,7 +296,7 @@
             function () {
               i();
             },
-            [i],
+            [i]
           );
           var I = (function () {
               var e = Object(d.a)(
@@ -311,7 +311,7 @@
                           }
                           return (
                             alert(
-                              "\uac12\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694",
+                              "\uac12\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694"
                             ),
                             e.abrupt("return")
                           );
@@ -326,7 +326,7 @@
                           return e.stop();
                       }
                   }, e);
-                }),
+                })
               );
               return function (t) {
                 return e.apply(this, arguments);
@@ -347,7 +347,7 @@
                           return e.stop();
                       }
                   }, e);
-                }),
+                })
               );
               return function (t, n) {
                 return e.apply(this, arguments);
@@ -368,7 +368,7 @@
                           return e.stop();
                       }
                   }, e);
-                }),
+                })
               );
               return function (t) {
                 return e.apply(this, arguments);
@@ -424,7 +424,7 @@
                         children: e.value,
                       }),
                     },
-                    e.id,
+                    e.id
                   );
                 }),
               }),
@@ -457,7 +457,7 @@
         };
       u.a.render(
         Object(r.jsx)(o.a.StrictMode, { children: Object(r.jsx)(x, {}) }),
-        document.getElementById("root"),
+        document.getElementById("root")
       ),
         m();
     },

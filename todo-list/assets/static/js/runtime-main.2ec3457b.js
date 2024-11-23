@@ -106,7 +106,7 @@
             n,
             function (r) {
               return e[r];
-            }.bind(null, n),
+            }.bind(null, n)
           );
       return t;
     }),
