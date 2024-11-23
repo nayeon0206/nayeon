@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 // Joi 스키마를 정의합니다.
 const schema = Joi.object({
@@ -8,7 +8,7 @@ const schema = Joi.object({
 });
 
 // 검증할 데이터를 정의합니다.
-const user = { name: 'Foo Bar' };
+const user = { name: "Foo Bar" };
 
 const validation = schema.validate(user);
 console.log(validation);
