@@ -41,18 +41,18 @@
         });
         r.push((t[2] = n));
         var u,
-          a = document.createElement("script");
-        (a.charset = "utf-8"),
+          a = document.createElement('script');
+        (a.charset = 'utf-8'),
           (a.timeout = 120),
-          i.nc && a.setAttribute("nonce", i.nc),
+          i.nc && a.setAttribute('nonce', i.nc),
           (a.src = (function (e) {
             return (
               i.p +
-              "static/js/" +
+              'static/js/' +
               ({}[e] || e) +
-              "." +
-              { 3: "0962e34f" }[e] +
-              ".chunk.js"
+              '.' +
+              { 3: '0962e34f' }[e] +
+              '.chunk.js'
             );
           })(e));
         var c = new Error();
@@ -61,11 +61,11 @@
           var t = o[e];
           if (0 !== t) {
             if (t) {
-              var n = r && ("load" === r.type ? "missing" : r.type),
+              var n = r && ('load' === r.type ? 'missing' : r.type),
                 u = r && r.target && r.target.src;
               (c.message =
-                "Loading chunk " + e + " failed.\n(" + n + ": " + u + ")"),
-                (c.name = "ChunkLoadError"),
+                'Loading chunk ' + e + ' failed.\n(' + n + ': ' + u + ')'),
+                (c.name = 'ChunkLoadError'),
                 (c.type = n),
                 (c.request = u),
                 t[1](c);
@@ -74,7 +74,7 @@
           }
         };
         var l = setTimeout(function () {
-          u({ type: "timeout", target: a });
+          u({ type: 'timeout', target: a });
         }, 12e4);
         (a.onerror = a.onload = u), document.head.appendChild(a);
       }
@@ -86,19 +86,19 @@
       i.o(e, r) || Object.defineProperty(e, r, { enumerable: !0, get: t });
     }),
     (i.r = function (e) {
-      "undefined" !== typeof Symbol &&
+      'undefined' !== typeof Symbol &&
         Symbol.toStringTag &&
-        Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
-        Object.defineProperty(e, "__esModule", { value: !0 });
+        Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+        Object.defineProperty(e, '__esModule', { value: !0 });
     }),
     (i.t = function (e, r) {
       if ((1 & r && (e = i(e)), 8 & r)) return e;
-      if (4 & r && "object" === typeof e && e && e.__esModule) return e;
+      if (4 & r && 'object' === typeof e && e && e.__esModule) return e;
       var t = Object.create(null);
       if (
         (i.r(t),
-        Object.defineProperty(t, "default", { enumerable: !0, value: e }),
-        2 & r && "string" != typeof e)
+        Object.defineProperty(t, 'default', { enumerable: !0, value: e }),
+        2 & r && 'string' != typeof e)
       )
         for (var n in e)
           i.d(
@@ -119,12 +119,12 @@
           : function () {
               return e;
             };
-      return i.d(r, "a", r), r;
+      return i.d(r, 'a', r), r;
     }),
     (i.o = function (e, r) {
       return Object.prototype.hasOwnProperty.call(e, r);
     }),
-    (i.p = "/"),
+    (i.p = '/'),
     (i.oe = function (e) {
       throw (console.error(e), e);
     });

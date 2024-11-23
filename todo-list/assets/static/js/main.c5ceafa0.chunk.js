@@ -4,7 +4,7 @@
     24: function (e, t, n) {},
     25: function (e, t, n) {},
     45: function (e, t, n) {
-      "use strict";
+      'use strict';
       n.r(t);
       var r = n(0),
         a = n(1),
@@ -17,23 +17,23 @@
         l = n(2),
         b = n(6),
         f = n.n(b),
-        j = "http://".concat(location.host) + "/api",
+        j = 'http://'.concat(location.host) + '/api',
         p = {
           getTodos: function () {
-            return f.a.get("".concat(j, "/todos"), {
+            return f.a.get(''.concat(j, '/todos'), {
               headers: {
-                authorization: "Bearer ".concat(localStorage.getItem("token")),
+                authorization: 'Bearer '.concat(localStorage.getItem('token')),
               },
             });
           },
           addTodo: function (e) {
             return f.a.post(
-              "".concat(j, "/todos"),
+              ''.concat(j, '/todos'),
               { value: e },
               {
                 headers: {
-                  authorization: "Bearer ".concat(
-                    localStorage.getItem("token"),
+                  authorization: 'Bearer '.concat(
+                    localStorage.getItem('token'),
                   ),
                 },
               },
@@ -61,24 +61,24 @@
                           e.next = 3;
                           break;
                         }
-                        return e.abrupt("return");
+                        return e.abrupt('return');
                       case 3:
                         return e.abrupt(
-                          "return",
+                          'return',
                           f.a.patch(
-                            "".concat(j, "/todos/").concat(t),
+                            ''.concat(j, '/todos/').concat(t),
                             { value: a, order: r, done: o },
                             {
                               headers: {
-                                authorization: "Bearer ".concat(
-                                  localStorage.getItem("token"),
+                                authorization: 'Bearer '.concat(
+                                  localStorage.getItem('token'),
                                 ),
                               },
                             },
                           ),
                         );
                       case 4:
-                      case "end":
+                      case 'end':
                         return e.stop();
                     }
                 }, e);
@@ -89,9 +89,9 @@
             };
           })(),
           deleteTodo: function (e) {
-            return f.a.delete("".concat(j, "/todos/").concat(e), {
+            return f.a.delete(''.concat(j, '/todos/').concat(e), {
               headers: {
-                authorization: "Bearer ".concat(localStorage.getItem("token")),
+                authorization: 'Bearer '.concat(localStorage.getItem('token')),
               },
             });
           },
@@ -100,7 +100,7 @@
               n = e.password,
               r = e.confirmPassword,
               a = e.nickname;
-            return f.a.post("".concat(j, "/users"), {
+            return f.a.post(''.concat(j, '/users'), {
               email: t,
               password: n,
               confirmPassword: r,
@@ -110,12 +110,12 @@
           login: function (e) {
             var t = e.email,
               n = e.password;
-            return f.a.post("".concat(j, "/auth"), { email: t, password: n });
+            return f.a.post(''.concat(j, '/auth'), { email: t, password: n });
           },
           getSelf: function () {
-            return f.a.get("".concat(j, "/users/me"), {
+            return f.a.get(''.concat(j, '/users/me'), {
               headers: {
-                authorization: "Bearer ".concat(localStorage.getItem("token")),
+                authorization: 'Bearer '.concat(localStorage.getItem('token')),
               },
             });
           },
@@ -183,7 +183,7 @@
                           case 17:
                             return (t.prev = 17), o(!1), t.finish(17);
                           case 20:
-                          case "end":
+                          case 'end':
                             return t.stop();
                         }
                     },
@@ -215,28 +215,28 @@
               b = Object(l.a)(d, 2),
               f = b[0],
               j = b[1],
-              p = Object(a.useState)(""),
+              p = Object(a.useState)(''),
               h = Object(l.a)(p, 2),
               v = h[0],
               O = h[1];
             return Object(r.jsxs)(r.Fragment, {
               children: [
-                Object(r.jsx)("input", {
-                  type: "checkbox",
+                Object(r.jsx)('input', {
+                  type: 'checkbox',
                   checked: u,
                   onChange: function () {
                     return c && c({ done: !u });
                   },
                 }),
                 !f &&
-                  Object(r.jsx)("span", {
+                  Object(r.jsx)('span', {
                     onDoubleClick: function () {
                       return O(String(s)) || j(!0);
                     },
                     children: s,
                   }),
                 f &&
-                  Object(r.jsx)("input", {
+                  Object(r.jsx)('input', {
                     value: v,
                     onChange: function (e) {
                       return O(e.target.value);
@@ -245,32 +245,32 @@
                       v !== String(s) && c && c({ value: v }), j(!1);
                     },
                   }),
-                Object(r.jsx)("button", {
+                Object(r.jsx)('button', {
                   onClick: function () {
                     return t();
                   },
                   disabled: !t || i,
-                  children: "up",
+                  children: 'up',
                 }),
-                Object(r.jsx)("button", {
+                Object(r.jsx)('button', {
                   onClick: function () {
                     return n();
                   },
                   disabled: !n || i,
-                  children: "down",
+                  children: 'down',
                 }),
-                Object(r.jsx)("button", {
+                Object(r.jsx)('button', {
                   onClick: function () {
                     return o();
                   },
                   disabled: !o || i,
-                  children: "\uc0ad\uc81c",
+                  children: '\uc0ad\uc81c',
                 }),
               ],
             });
           }),
         O = function () {
-          var e = Object(a.useState)(""),
+          var e = Object(a.useState)(''),
             t = Object(l.a)(e, 2),
             n = t[0],
             o = t[1],
@@ -311,18 +311,18 @@
                           }
                           return (
                             alert(
-                              "\uac12\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694",
+                              '\uac12\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694',
                             ),
-                            e.abrupt("return")
+                            e.abrupt('return')
                           );
                         case 3:
                           return (e.next = 5), g(t);
                         case 5:
                           return (e.next = 7), i();
                         case 7:
-                          o("");
+                          o('');
                         case 8:
-                        case "end":
+                        case 'end':
                           return e.stop();
                       }
                   }, e);
@@ -343,7 +343,7 @@
                         case 2:
                           return (e.next = 4), i();
                         case 4:
-                        case "end":
+                        case 'end':
                           return e.stop();
                       }
                   }, e);
@@ -364,7 +364,7 @@
                         case 2:
                           return (e.next = 4), i();
                         case 4:
-                        case "end":
+                        case 'end':
                           return e.stop();
                       }
                   }, e);
@@ -376,28 +376,28 @@
             })();
           return Object(r.jsxs)(r.Fragment, {
             children: [
-              Object(r.jsx)("input", {
+              Object(r.jsx)('input', {
                 value: n,
                 onChange: function (e) {
                   return o(e.target.value);
                 },
               }),
-              Object(r.jsx)("button", {
+              Object(r.jsx)('button', {
                 onClick: function () {
                   return I(n);
                 },
                 disabled: F,
-                children: "\ucd94\uac00",
+                children: '\ucd94\uac00',
               }),
-              Object(r.jsx)("ul", {
-                className: "list-group",
+              Object(r.jsx)('ul', {
+                className: 'list-group',
                 children: (
                   (null === b || void 0 === b ? void 0 : b.todos) || []
                 ).map(function (e, t) {
                   return Object(r.jsx)(
-                    "li",
+                    'li',
                     {
-                      className: "list-group-item",
+                      className: 'list-group-item',
                       children: Object(r.jsx)(v, {
                         onUp:
                           0 !== t &&
@@ -435,8 +435,8 @@
           return Object(r.jsx)(r.Fragment, { children: Object(r.jsx)(O, {}) });
         };
       var x = function () {
-          return Object(r.jsx)("div", {
-            className: "App",
+          return Object(r.jsx)('div', {
+            className: 'App',
             children: Object(r.jsx)(g, {}),
           });
         },
@@ -457,7 +457,7 @@
         };
       u.a.render(
         Object(r.jsx)(o.a.StrictMode, { children: Object(r.jsx)(x, {}) }),
-        document.getElementById("root"),
+        document.getElementById('root'),
       ),
         m();
     },

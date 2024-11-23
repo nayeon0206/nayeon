@@ -2,28 +2,28 @@
   [3],
   {
     46: function (t, n, e) {
-      "use strict";
+      'use strict';
       e.r(n),
-        e.d(n, "getCLS", function () {
+        e.d(n, 'getCLS', function () {
           return v;
         }),
-        e.d(n, "getFCP", function () {
+        e.d(n, 'getFCP', function () {
           return g;
         }),
-        e.d(n, "getFID", function () {
+        e.d(n, 'getFID', function () {
           return h;
         }),
-        e.d(n, "getLCP", function () {
+        e.d(n, 'getLCP', function () {
           return y;
         }),
-        e.d(n, "getTTFB", function () {
+        e.d(n, 'getTTFB', function () {
           return F;
         });
       var i,
         a,
         r = function () {
-          return ""
-            .concat(Date.now(), "-")
+          return ''
+            .concat(Date.now(), '-')
             .concat(Math.floor(8999999999999 * Math.random()) + 1e12);
         },
         o = function (t) {
@@ -54,18 +54,18 @@
           s = !t.persisted;
         },
         f = function () {
-          addEventListener("pagehide", d),
-            addEventListener("beforeunload", function () {});
+          addEventListener('pagehide', d),
+            addEventListener('beforeunload', function () {});
         },
         p = function (t) {
           var n =
             arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
           c || (f(), (c = !0)),
             addEventListener(
-              "visibilitychange",
+              'visibilitychange',
               function (n) {
                 var e = n.timeStamp;
-                "hidden" === document.visibilityState &&
+                'hidden' === document.visibilityState &&
                   t({ timeStamp: e, isUnloading: s });
               },
               { capture: !0, once: n },
@@ -76,7 +76,7 @@
           return function () {
             e && n.isFinal && e.disconnect(),
               n.value >= 0 &&
-                (i || n.isFinal || "hidden" === document.visibilityState) &&
+                (i || n.isFinal || 'hidden' === document.visibilityState) &&
                 ((n.delta = n.value - (a || 0)),
                 (n.delta || n.isFinal || void 0 === a) &&
                   (t(n), (a = n.value)));
@@ -85,12 +85,12 @@
         v = function (t) {
           var n,
             e = arguments.length > 1 && void 0 !== arguments[1] && arguments[1],
-            i = o("CLS", 0),
+            i = o('CLS', 0),
             a = function (t) {
               t.hadRecentInput ||
                 ((i.value += t.value), i.entries.push(t), n());
             },
-            r = u("layout-shift", a);
+            r = u('layout-shift', a);
           r &&
             ((n = l(t, i, r, e)),
             p(function (t) {
@@ -101,7 +101,7 @@
         m = function () {
           return (
             void 0 === i &&
-              ((i = "hidden" === document.visibilityState ? 0 : 1 / 0),
+              ((i = 'hidden' === document.visibilityState ? 0 : 1 / 0),
               p(function (t) {
                 var n = t.timeStamp;
                 return (i = n);
@@ -115,10 +115,10 @@
         },
         g = function (t) {
           var n,
-            e = o("FCP"),
+            e = o('FCP'),
             i = m(),
-            a = u("paint", function (t) {
-              "first-contentful-paint" === t.name &&
+            a = u('paint', function (t) {
+              'first-contentful-paint' === t.name &&
                 t.startTime < i.timeStamp &&
                 ((e.value = t.startTime),
                 (e.isFinal = !0),
@@ -128,7 +128,7 @@
           a && (n = l(t, e, a));
         },
         h = function (t) {
-          var n = o("FID"),
+          var n = o('FID'),
             e = m(),
             i = function (t) {
               t.startTime < e.timeStamp &&
@@ -137,7 +137,7 @@
                 (n.isFinal = !0),
                 r());
             },
-            a = u("first-input", i),
+            a = u('first-input', i),
             r = l(t, n, a);
           a
             ? p(function () {
@@ -151,7 +151,7 @@
                   (n.isFinal = !0),
                   (n.entries = [
                     {
-                      entryType: "first-input",
+                      entryType: 'first-input',
                       name: i.type,
                       target: i.target,
                       cancelable: i.cancelable,
@@ -166,7 +166,7 @@
           return (
             a ||
               (a = new Promise(function (t) {
-                return ["scroll", "keydown", "pointerdown"].map(function (n) {
+                return ['scroll', 'keydown', 'pointerdown'].map(function (n) {
                   addEventListener(n, t, {
                     once: !0,
                     passive: !0,
@@ -180,7 +180,7 @@
         y = function (t) {
           var n,
             e = arguments.length > 1 && void 0 !== arguments[1] && arguments[1],
-            i = o("LCP"),
+            i = o('LCP'),
             a = m(),
             r = function (t) {
               var e = t.startTime;
@@ -189,7 +189,7 @@
                 : (i.isFinal = !0),
                 n();
             },
-            s = u("largest-contentful-paint", r);
+            s = u('largest-contentful-paint', r);
           if (s) {
             n = l(t, i, s, e);
             var c = function () {
@@ -200,17 +200,17 @@
         },
         F = function (t) {
           var n,
-            e = o("TTFB");
+            e = o('TTFB');
           (n = function () {
             try {
               var n =
-                performance.getEntriesByType("navigation")[0] ||
+                performance.getEntriesByType('navigation')[0] ||
                 (function () {
                   var t = performance.timing,
-                    n = { entryType: "navigation", startTime: 0 };
+                    n = { entryType: 'navigation', startTime: 0 };
                   for (var e in t)
-                    "navigationStart" !== e &&
-                      "toJSON" !== e &&
+                    'navigationStart' !== e &&
+                      'toJSON' !== e &&
                       (n[e] = Math.max(t[e] - t.navigationStart, 0));
                   return n;
                 })();
@@ -220,9 +220,9 @@
                 t(e);
             } catch (t) {}
           }),
-            "complete" === document.readyState
+            'complete' === document.readyState
               ? setTimeout(n, 0)
-              : addEventListener("pageshow", n);
+              : addEventListener('pageshow', n);
         };
     },
   },

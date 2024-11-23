@@ -1,8 +1,8 @@
 // /routes/todos.router.js
 
-import express from "express";
-import Joi from "joi";
-import Todo from "../schemas/todo.schema.js";
+import express from 'express';
+import Joi from 'joi';
+import Todo from '../schemas/todo.schema.js';
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ const createTodoSchema = Joi.object({
 });
 
 // 할일 등록 api//
-router.post("/todos", async (req, res, next) => {
+router.post('/todos', async (req, res, next) => {
   try {
     // 클라이언트에게 전달받은 데이터를 검증합니다.
     const validation = await createTodoSchema.validateAsync(req.body);
@@ -32,13 +32,13 @@ router.post("/todos", async (req, res, next) => {
     if (!value) {
       return res
         .status(400)
-        .json({ errorMessage: "해야할 일(value) 데이터가 존재하지 않습니다." });
+        .json({ errorMessage: '해야할 일(value) 데이터가 존재하지 않습니다.' });
     }
 
     // Todo모델을 사용해, MongoDB에서 'order' 값이 가장 높은 '해야할 일'을 찾습니다.
     // findOne = 1개의 데이터만 조회한다.
     // sort = 정렬한다. -> 어떤 컬럼을? -를 붙이면 내림차순으로 정렬됨
-    const todoMaxOrder = await Todo.findOne().sort("-order").exec();
+    const todoMaxOrder = await Todo.findOne().sort('-order').exec();
 
     // 'order' 값이 가장 높은 도큐멘트의 1을 추가하거나 없다면, 1을 할당합니다.
     const order = todoMaxOrder ? todoMaxOrder.order + 1 : 1;
@@ -56,9 +56,9 @@ router.post("/todos", async (req, res, next) => {
 });
 
 // 해야할 일 목록 조회 api
-router.get("/todos", async (req, res) => {
+router.get('/todos', async (req, res) => {
   // Todo모델을 이용해, MongoDB에서 'order' 값이 가장 높은 '해야할 일'을 찾습니다.
-  const todos = await Todo.find().sort("-order").exec();
+  const todos = await Todo.find().sort('-order').exec();
 
   // 찾은 '해야할 일'을 클라이언트에게 전달합니다.
   return res.status(200).json({ todos });
@@ -71,7 +71,7 @@ router.get("/todos", async (req, res) => {
 // /routes/todos.router.js
 
 /** 순서 변경, 할 일 완료/해제, 할 일 내용 변경 **/
-router.patch("/todos/:todoId", async (req, res) => {
+router.patch('/todos/:todoId', async (req, res) => {
   // 변경할 '해야할 일'의 ID 값을 가져옵니다.
   const { todoId } = req.params;
   // 클라이언트가 전달한 순서, 완료 여부, 내용 데이터를 가져옵니다.
@@ -82,7 +82,7 @@ router.patch("/todos/:todoId", async (req, res) => {
   if (!currentTodo) {
     return res
       .status(404)
-      .json({ errorMessage: "존재하지 않는 todo 데이터입니다." });
+      .json({ errorMessage: '존재하지 않는 todo 데이터입니다.' });
   }
 
   if (order) {
@@ -112,7 +112,7 @@ router.patch("/todos/:todoId", async (req, res) => {
 });
 
 /** 할 일 삭제 **/
-router.delete("/todos/:todoId", async (req, res) => {
+router.delete('/todos/:todoId', async (req, res) => {
   // 삭제할 '해야할 일'의 ID 값을 가져옵니다.
   const { todoId } = req.params;
 
@@ -121,7 +121,7 @@ router.delete("/todos/:todoId", async (req, res) => {
   if (!todo) {
     return res
       .status(404)
-      .json({ errorMessage: "존재하지 않는 해야할 일 정보입니다." });
+      .json({ errorMessage: '존재하지 않는 해야할 일 정보입니다.' });
   }
 
   // 조회된 '해야할 일'을 삭제합니다.
