@@ -20,7 +20,7 @@ const createTodoSchema = Joi.object({
 });
 
 // 할일 등록 api//
-router.post("/todos", async (req, res) => {
+router.post("/todos", async (req, res, next) => {
   try {
     // 클라이언트에게 전달받은 데이터를 검증합니다.
     const validation = await createTodoSchema.validateAsync(req.body);
@@ -50,12 +50,8 @@ router.post("/todos", async (req, res) => {
     // 생성한 '해야할 일'을 MongoDB에 저장합니다.
     return res.status(201).json({ todo: todo });
   } catch (error) {
-    console.error(error);
-    if(error.name === 'ValidationError') {
-      return res.status(400).json({errorMessage: error.message});
-    }
-
-    return res.status(500).json({errorMessage:'서버에서 에러가 발생했습니다.'})
+    // router 다음에 있는 에러 처리 미들웨어를 실행한다.
+    next(error);
   }
 });
 
