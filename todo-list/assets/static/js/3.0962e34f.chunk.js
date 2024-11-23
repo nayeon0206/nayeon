@@ -68,7 +68,7 @@
                 "hidden" === document.visibilityState &&
                   t({ timeStamp: e, isUnloading: s });
               },
-              { capture: !0, once: n },
+              { capture: !0, once: n }
             );
         },
         l = function (t, n, e, i) {
