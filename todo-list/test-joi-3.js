@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 // Joi 스키마를 정의합니다.
 const schema = Joi.object({
@@ -8,7 +8,7 @@ const schema = Joi.object({
 });
 
 // 검증할 데이터를 정의합니다.
-const user = { name: 'Foo Bar' };
+const user = { name: "Foo Bar" };
 
 const validation = schema.validate(user);
 console.log(validation);
@@ -26,7 +26,7 @@ console.log(validation);
 
 // try {
 //   // schema를 이용해 user 데이터를 검증합니다.
-//   const validation = await schema.validateAsync(user); 
+//   const validation = await schema.validateAsync(user);
 //   // 유효성 검증을 하기 위해 사용하는 메서드validate()를 validateAsync()로 사용해 데이터를 비동기적으로 검증
 //   // 검증 결과값 중 error가 존재하지 않는다면, 데이터가 유효하다는 메시지를 출력합니다.
 //   console.log('Valid Data!');
