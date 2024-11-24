@@ -3,4 +3,4 @@ package.json
 package-lock.json
 yarn.lock
 .prettierrc.json
-row-query-start\ app.js
+app.js
