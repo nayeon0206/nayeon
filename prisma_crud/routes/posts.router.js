@@ -19,15 +19,14 @@ const prisma = new PrismaClient({
 // 3. 생성된 게시글을 반환한다.
 
 
-
 // 게시글 생성
 router.post('/posts', async (req, res, next) => {
   const { title, content, password } = req.body;
   const post = await prisma.posts.create({
     data: {
-      title,
-      content,
-      password,
+      title: title,
+      content: content,
+      password: password,
     },
   });
 
