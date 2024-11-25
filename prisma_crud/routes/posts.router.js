@@ -34,4 +34,19 @@ router.post('/posts', async (req, res, next) => {
 });
 
 
+/** 게시글 목록 조회 API **/
+router.get('/posts', async (req, res, next) => {
+  const posts = await prisma.posts.findMany({
+    select: {
+      postId: true,
+      title: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+
+  return res.status(200).json({ data: posts });
+});
+
+
 export default router;
