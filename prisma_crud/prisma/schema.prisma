@@ -12,3 +12,15 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
+model Posts {
+  postId    Int      @id @default(autoincrement()) @map("postId")
+  title     String   @map("title")
+  content   String   @map("content") @db.Text
+  password  String   @map("password")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  @@map("Posts")
+}
