@@ -62,7 +62,7 @@ app.get("/set", (req, res) => {
 
 app.get("/get", (req, res) => {
   const cookies = req.cookies;
-  return res.status(200).json({ cookie: cookies });
+  return res.status(200).json({ cookies });
 });
 
 app.listen(PORT, () => {
