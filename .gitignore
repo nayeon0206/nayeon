@@ -2,6 +2,12 @@ node_modules
 package.json
 package-lock.json
 yarn.lock
+<<<<<<< HEAD
 .prettierrc.json
 row-query-start\app.js
 row-query-start/app.js
+=======
+app.js
+SPA-SHOP/package-lock.json
+todo-list/
+>>>>>>> Assignment
