@@ -1,3 +1,6 @@
 node_modules
 package.json
 yarn.lock
+app.js
+SPA-SHOP/package-lock.json
+todo-list/
