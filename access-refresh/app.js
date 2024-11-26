@@ -87,7 +87,6 @@ app.get('/tokens/validate', (req, res) => {
         .status(401)
         .json({ errorMessage: 'Access Token이 유효하지 않습니다.' });
     }
-  
     const { id } = payload;
     return res.json({
       message: `${id}의 Payload를 가진 Token이 성공적으로 인증되었습니다.`,
