@@ -1,3 +1,4 @@
 node_modules
 # Keep environment variables out of version control
 .env
+community-hub/src/utiles/prisma/app.js
