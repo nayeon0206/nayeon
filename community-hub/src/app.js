@@ -17,9 +17,9 @@ const PORT = 3018;
 const MySQLStore = expressMySQLSession(expressSession);
 // MySQLStore를 이용해 세션 외부 스토리지를 선언합니다.
 const sessionStore = new MySQLStore({
-  user: 'root',
-  password: 'aaaa4321',
-  host: 'express-database.clx5rpjtu59t.ap-northeast-2.rds.amazonaws.com',
+  user: 'nayeon',
+  password: 'slek970206!',
+  host: 'express-database.cnkqmoqs2zk1.ap-northeast-2.rds.amazonaws.com',
   port: 3306,
   database: 'community_hub',
   expiration: 1000 * 60 * 60 * 24, // 세션의 만료 기간을 1일로 설정합니다.
