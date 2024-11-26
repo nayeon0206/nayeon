@@ -72,7 +72,6 @@ model Comments {
   user Users @relation(fields: [userId], references: [userId], onDelete: Cascade)
   // Posts 테이블과 관계를 설정합니다.
   post Posts @relation(fields: [postId], references: [postId], onDelete: Cascade)
-  
+
   @@map(""Comments"")
 }
-
