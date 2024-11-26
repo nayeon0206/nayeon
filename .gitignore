@@ -2,7 +2,7 @@ node_modules
 package.json
 package-lock.json
 yarn.lock
-
+community-hub/src/app.js
 .prettierrc.json
 row-query-start/app.js
 community-hub/src/app.js
