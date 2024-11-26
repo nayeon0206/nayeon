@@ -5,7 +5,7 @@ yarn.lock
 
 .prettierrc.json
 row-query-start/app.js
-
+community-hub/src/utiles/prisma/app.js
 
 SPA-SHOP/package-lock.json
 todo-list/
