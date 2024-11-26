@@ -4,8 +4,6 @@ package-lock.json
 yarn.lock
 .prettierrc.json
 row-query-start/app.js
-community-hub/src/app.js
-
 SPA-SHOP/package-lock.json
 todo-list/
 
