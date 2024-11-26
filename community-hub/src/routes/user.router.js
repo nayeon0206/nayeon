@@ -79,16 +79,9 @@ router.post('/sign-in', async (req, res, next) => {
   if (!(await bcrypt.compare(password, user.password)))
     return res.status(401).json({ message: '비밀번호가 일치하지 않습니다.' });
 
-  // 로그인에 성공하면, 사용자의 userId를 바탕으로 토큰을 생성합니다.
-  const token = jwt.sign(
-    {
-      userId: user.userId,
-    },
-    'custom-secret-key',
-  );
 
-  // authotization 쿠키에 Berer 토큰 형식으로 JWT를 저장합니다.
-  res.cookie('authorization', `Bearer ${token}`);
+  
+  req.session.userId = user.userId;
   return res.status(200).json({ message: '로그인에 성공하였습니다.' });
 });
 
