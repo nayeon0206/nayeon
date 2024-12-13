@@ -10,7 +10,7 @@ const registerHandler = (io) => {
     addUser({ uuid: userUUID, socketId: socket.id }); // 사용자 추가
 
     // 접속 해제시 이벤트 처리
-    socket.on('disconnect', () => {});
+    socket.on('disconnect', () => handleDisconnect(socket, userUUID));
     });
   };
   
