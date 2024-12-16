@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>');
 });
 
+// 3000번 포트로 연다. 비동기함수
 server.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
 

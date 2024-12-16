@@ -1,6 +1,7 @@
 class Score {
   score = 0;
   HIGH_SCORE_KEY = 'highScore';
+  stageChange = true;
 
   constructor(ctx, scaleRatio) {
     this.ctx = ctx;
@@ -10,6 +11,10 @@ class Score {
 
   update(deltaTime) {
     this.score += deltaTime * 0.001;
+    if (Math.floor(this.score) === 100 && this.stageChange) {
+      this.stageChange = false;
+      sendEvent(11, { currentStage: 1000, targetStage: 1001 });
+    }
   }
 
   getItem(itemId) {

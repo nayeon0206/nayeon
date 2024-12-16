@@ -1,5 +1,6 @@
 import { CLIENT_VERSION } from 'Constants.js';
 
+//연결 요청 (클라이언트 코드가 서버에 요청한다.)
 const socket = io('http://localhost:3000', {
   query: {
     clientVersion: CLIENT_VERSION,
