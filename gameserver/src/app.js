@@ -8,19 +8,19 @@ const server = createServer(app);
 
 const PORT = 3000;
 
+app.use(express.static('src/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 initSocket(server);
 
 app.get('/', (req, res) => {
-    res.send("Hello World!")
+  res.send('<h1>Hello World</h1>');
 });
 
 server.listen(PORT, async () => {
-    // console.log('example')
   console.log(`Server is running on port ${PORT}`);
 
-try {
+  try {
     const assets = await loadGameAssets();
     console.log(assets);
     console.log('Assets loaded successfully');
